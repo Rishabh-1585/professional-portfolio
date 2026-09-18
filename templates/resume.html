@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}
+Resume | My Portfolio
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="text-center">
+
+        <h1 class="fw-bold">My Resume</h1>
+
+        <p class="text-muted mt-3">
+            View or download my latest professional resume.
+        </p>
+
+        <div class="mt-4">
+
+    {% if resume %}
+
+    <a href="{{ resume.file.url }}"
+       target="_blank"
+       class="btn btn-dark me-2">
+        View Resume
+    </a>
+
+    <a href="{{ resume.file.url }}"
+       download
+       class="btn btn-outline-dark">
+        Download Resume
+    </a>
+
+    {% else %}
+
+    <p class="text-muted">
+        Resume is currently unavailable.
+    </p>
+
+    {% endif %}
+
+</div>
+
+    </div>
+
+</div>
+
+{% endblock %}

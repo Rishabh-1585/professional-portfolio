@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}
+Blog | My Portfolio
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">My Blog</h1>
+
+        <p class="text-muted">
+            Articles, learning notes and insights about technology and data analytics.
+        </p>
+    </div>
+
+    <div class="row g-4">
+        {% for post in posts %}
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card h-100 shadow-sm">
+
+                {% if post.image %}
+<img src="{{ post.image.url }}"
+     class="card-img-top blog-card-image"
+     alt="{{ post.title }}">
+{% endif %}
+
+                <div class="card-body">
+
+                    <h4 class="fw-bold">
+                        {{ post.title }}
+                    </h4>
+
+                    <p class="text-muted">
+                        {{ post.short_description }}
+                    </p>
+
+                    <p class="small text-muted">
+                        {{ post.created_at|date:"M d, Y" }}
+                    </p>
+
+                    <a href="{% url 'blog_detail' post.slug %}"
+                       class="btn btn-outline-dark">
+                        Read Article
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="col-12 text-center">
+
+            <p class="text-muted">
+                No blog articles available.
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% block extra_css %}
+
+<style>
+    .blog-card-image {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+        .blog-card-image {
+            height: 200px;
+        }
+    }
+</style>
+
+{% endblock %}
+{% endblock %}

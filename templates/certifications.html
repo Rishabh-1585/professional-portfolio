@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}
+Certifications | My Portfolio
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">Certifications</h1>
+        <p class="text-muted">
+            My professional certifications and achievements.
+        </p>
+    </div>
+
+    <div class="row g-4">
+
+        {% for certification in certifications %}
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card h-100 shadow-sm">
+
+                <div class="card-body">
+
+                    <h4 class="fw-bold">
+                        {{ certification.name }}
+                    </h4>
+
+                    <p class="text-muted">
+                        {{ certification.category }}
+                    </p>
+
+                    {% if certification.description %}
+                    <p>
+                        {{ certification.description }}
+                    </p>
+                    {% endif %}
+
+                    {% if certification.issued_by %}
+                    <p class="mb-1">
+                        <strong>Issued By:</strong>
+                        {{ certification.issued_by }}
+                    </p>
+                    {% endif %}
+
+                    {% if certification.issue_date %}
+                    <p class="text-muted">
+                        <strong>Issue Date:</strong>
+                        {{ certification.issue_date|date:"M Y" }}
+                    </p>
+                    {% endif %}
+
+                    <a href="{{ certification.certificate.url }}"
+                       target="_blank"
+                       class="btn btn-outline-dark">
+                        View Certificate
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="col-12 text-center">
+
+            <p class="text-muted">
+                No certifications available.
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

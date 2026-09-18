@@ -1,0 +1,411 @@
+{% extends "base.html" %}
+
+{% block title %}
+Contact | My Portfolio
+{% endblock %}
+
+{% block content %}
+
+<div class="contact-page">
+
+    <div class="container py-5">
+
+        {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"></button>
+        </div>
+    {% endfor %}
+{% endif %}
+
+        <!-- Header -->
+        <div class="text-center mb-5">
+
+            <h1 class="fw-bold">
+                Get In Touch
+            </h1>
+
+            <p class="text-muted">
+                Have a project, opportunity or question?
+                Feel free to connect with me.
+            </p>
+
+        </div>
+
+
+        <!-- Contact Layout -->
+        <div class="row g-4">
+
+
+            <!-- LEFT SIDE -->
+            <div class="col-lg-5">
+
+                <div class="contact-info-card">
+
+                    <div class="contact-card-header">
+                        <h2>Let's Connect</h2>
+                        <p>
+                            Feel free to reach out for opportunities,
+                            projects or professional discussions.
+                        </p>
+                    </div>
+
+
+                    <!-- Mobile -->
+                    <div class="contact-item">
+
+                        <div class="contact-icon">
+                            📞
+                        </div>
+
+                        <div>
+                            <h5>Mobile</h5>
+                            <p>
+                                +91 XXXXX XXXXX
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Email -->
+                    <div class="contact-item">
+
+                        <div class="contact-icon">
+                            ✉
+                        </div>
+
+                        <div>
+                            <h5>Email</h5>
+                            <p>
+                                your@email.com
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- GitHub -->
+                    <div class="contact-item">
+
+                        <div class="contact-icon">
+                            Git
+                        </div>
+
+                        <div>
+                            <h5>GitHub</h5>
+
+                            <a href="#"
+                               target="_blank">
+                                GitHub Profile
+                            </a>
+                        </div>
+
+                    </div>
+
+
+                    <!-- LinkedIn -->
+                    <div class="contact-item">
+
+                        <div class="contact-icon">
+                            in
+                        </div>
+
+                        <div>
+                            <h5>LinkedIn</h5>
+
+                            <a href="#"
+                               target="_blank">
+                                LinkedIn Profile
+                            </a>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT SIDE -->
+            <div class="col-lg-7">
+
+                <div class="contact-form-card">
+
+                    <div class="contact-card-header">
+                        <h2>Contact Me</h2>
+                        <p>
+                            Send me a message and I'll get back to you.
+                        </p>
+                    </div>
+
+
+                    <form method="post">
+    {% csrf_token %}
+
+                        <div class="row">
+
+                            <!-- Name -->
+                            <div class="col-md-6 mb-3">
+
+                                <label class="form-label">
+                                    Your Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    name="name"
+                                    class="form-control"
+                                    placeholder="Enter your name"
+                                    required>
+
+                            </div>
+
+
+                            <!-- Email -->
+                            <div class="col-md-6 mb-3">
+
+                                <label class="form-label">
+                                    Email
+                                </label>
+
+                                <input
+                                    type="email"
+                                    name="email"
+                                    class="form-control"
+                                    placeholder="Enter your email"
+                                    required>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Subject -->
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Subject
+                            </label>
+
+                            <input
+                                type="text"
+                                name="subject"
+                                class="form-control"
+                                placeholder="Enter subject"
+                                required>
+
+                        </div>
+
+
+                        <!-- Message -->
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Message
+                            </label>
+
+                            <textarea name="message"
+                                class="form-control"
+                                rows="4"
+                                placeholder="Write your message" required></textarea>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="btn contact-submit-btn">
+
+                            Send Message →
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% block extra_css %}
+
+<style>
+
+    .contact-page {
+        background: #f8f9fa;
+        min-height: 70vh;
+    }
+
+
+    .contact-info-card,
+    .contact-form-card {
+        height: 100%;
+        background: #ffffff;
+        border: 1px solid #e9ecef;
+        border-radius: 16px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+    }
+
+
+    .contact-card-header {
+        padding: 20px 25px;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+
+    .contact-card-header h2 {
+        font-size: 1.7rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+
+    .contact-card-header p {
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 15px 25px;
+        border-bottom: 1px solid #f0f0f0;
+        transition: all 0.3s ease;
+    }
+
+
+    .contact-item:last-child {
+        border-bottom: none;
+    }
+
+
+    .contact-item:hover {
+        transform: translateX(5px);
+        background: #f8f9fa;
+    }
+
+
+    .contact-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #111827;
+        color: #ffffff;
+        border-radius: 10px;
+        font-weight: 700;
+    }
+
+
+    .contact-item h5 {
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+
+    .contact-item p {
+        margin: 0;
+        color: #6c757d;
+    }
+
+
+    .contact-item a {
+        color: #212529;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+
+    .contact-item a:hover {
+        text-decoration: underline;
+    }
+
+
+    .contact-form-card {
+        padding-bottom: 30px;
+    }
+
+
+    .contact-form-card form {
+        padding: 25px;
+    }
+
+
+    .contact-form-card .form-label {
+        font-weight: 600;
+    }
+
+
+    .contact-form-card .form-control {
+        padding: 9px 12px;
+        border-radius: 7px;
+        border: 1px solid #dee2e6;
+    }
+
+
+    .contact-form-card .form-control:focus {
+        border-color: #111827;
+        box-shadow: 0 0 0 0.15rem rgba(17, 24, 39, 0.1);
+    }
+
+
+    .contact-submit-btn {
+        background: #111827;
+        color: #ffffff;
+        padding: 11px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        border: 1px solid #111827;
+        transition: all 0.3s ease;
+    }
+
+
+    .contact-submit-btn:hover {
+        background: #ffffff;
+        color: #111827;
+    }
+
+
+    @media (max-width: 768px) {
+
+        .contact-page {
+            padding-bottom: 20px;
+        }
+
+        .contact-card-header {
+            padding: 20px;
+        }
+
+        .contact-form-card form {
+            padding: 20px;
+        }
+
+        .contact-item {
+            padding: 15px 20px;
+        }
+
+    }
+
+</style>
+
+{% endblock %}
+
+{% endblock %}

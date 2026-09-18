@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}
+Experience | My Portfolio
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">My Experience</h1>
+
+        <p class="text-muted">
+            My professional and internship experience.
+        </p>
+    </div>
+
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            {% for experience in experiences %}
+
+            <div class="card shadow-sm mb-4">
+
+                <div class="card-body">
+
+                    <h3 class="fw-bold">
+                        {{ experience.role }}
+                    </h3>
+
+                    <h5 class="text-muted">
+                        {{ experience.company }}
+                    </h5>
+
+                    <p class="text-muted">
+
+                        {{ experience.start_date|date:"M Y" }}
+
+                        -
+
+                        {% if experience.end_date %}
+                            {{ experience.end_date|date:"M Y" }}
+                        {% else %}
+                            Present
+                        {% endif %}
+
+                    </p>
+
+                    <hr>
+
+
+                    {% if experience.description %}
+
+                    <p>
+                        {{ experience.description }}
+                    </p>
+
+                    {% endif %}
+
+
+                    {% if experience.responsibilities %}
+
+                    <h5>Responsibilities</h5>
+
+                    <p>
+                        {{ experience.responsibilities }}
+                    </p>
+
+                    {% endif %}
+
+
+                    {% if experience.technologies %}
+
+                    <h5>Technologies</h5>
+
+                    <p>
+                        {{ experience.technologies }}
+                    </p>
+
+                    {% endif %}
+
+
+                    {% if experience.achievements %}
+
+                    <h5>Achievements</h5>
+
+                    <p>
+                        {{ experience.achievements }}
+                    </p>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="text-center">
+
+                <p class="text-muted">
+                    No experience available.
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

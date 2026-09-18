@@ -1,0 +1,324 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}My Portfolio{% endblock %}</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    {% block extra_css %}{% endblock %}
+
+    <meta name="description"
+      content="Professional portfolio of a Data Analyst and Web Developer showcasing projects, skills, experience and technical expertise.">
+
+<meta name="keywords"
+      content="Data Analyst, Python, SQL, Power BI, Excel, Django, Web Developer, Portfolio">
+<meta property="og:title" content="My Portfolio | Data Analyst & Web Developer">
+
+<meta property="og:description"
+      content="Explore my projects, skills, experience and technical expertise.">
+
+<meta property="og:type" content="website">
+
+<meta property="og:title" content="My Portfolio | Data Analyst & Web Developer">
+
+<meta property="og:description"
+      content="Explore my projects, skills, experience and technical expertise.">
+
+<meta property="og:type" content="website">
+<meta name="robots" content="index, follow">
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+
+            <a class="navbar-brand fw-bold" href="/">
+                My Portfolio
+            </a>
+
+           
+
+<!-- Mobile Menu Button -->
+<button class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'skills' %}">Skills</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'projects' %}">Projects</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'experience' %}">Experience</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'education' %}">Education</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'certifications' %}">
+                         Certifications
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'resume' %}">
+                        Resume
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog' %}">
+                         Blog
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">
+                         Contact
+                        </a>
+                    </li>
+
+                  
+</li>
+
+                </ul>
+
+            </div>
+            <button id="themeToggle"
+        class="btn btn-outline-light theme-toggle"
+        type="button">
+    🌙
+</button>
+        </div>
+    </nav>
+
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+<!-- Professional Footer -->
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <!-- About -->
+            <div class="col-lg-4 col-md-6">
+
+                <div class="footer-brand">
+                    <h3>Rishabh Sharma</h3>
+
+                    <p class="footer-role">
+                        Data Analyst & Python Developer
+                    </p>
+
+                    <p class="footer-description">
+                        I build data-driven solutions and practical
+                        web applications using Python, SQL, Power BI,
+                        Excel and Django.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- Quick Links -->
+            <div class="col-lg-2 col-md-6">
+
+                <h5 class="footer-title">
+                    Quick Links
+                </h5>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="{% url 'home' %}">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'about' %}">
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'skills' %}">
+                            Skills
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'projects' %}">
+                            Projects
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'contact' %}">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- Explore -->
+            <div class="col-lg-3 col-md-6">
+
+                <h5 class="footer-title">
+                    Explore
+                </h5>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="{% url 'experience' %}">
+                            Experience
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'education' %}">
+                            Education
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'certifications' %}">
+                            Certifications
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'resume' %}">
+                            Resume
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'blog' %}">
+                            Blog
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- Contact -->
+            <div class="col-lg-3 col-md-6">
+
+                <h5 class="footer-title">
+                    Let's Connect
+                </h5>
+
+                <p class="footer-contact-text">
+                    Have an opportunity or project in mind?
+                    Let's connect and build something useful.
+                </p>
+
+                <a href="{% url 'contact' %}"
+                   class="footer-contact-btn">
+                    Get In Touch →
+                </a>
+
+                <div class="footer-socials">
+
+                    <a href="#"
+                       class="social-btn"
+                       title="GitHub">
+                        GitHub
+                    </a>
+
+                    <a href="#"
+                       class="social-btn"
+                       title="LinkedIn">
+                        LinkedIn
+                    </a>
+
+                    <a href="#"
+                       class="social-btn"
+                       title="Instagram">
+                        LinkedIn
+                    </a>
+
+                    <a href="#"
+                       class="social-btn"
+                       title="Facebook">
+                        LinkedIn
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Rishabh Sharma.
+                All Rights Reserved.
+            </p>
+
+            <p>
+                Built with
+                <strong>Python & Django</strong>
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+
+</body>
+</html>

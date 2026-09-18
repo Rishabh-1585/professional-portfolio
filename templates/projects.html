@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Projects | My Portfolio
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">My Projects</h1>
+
+        <p class="text-muted">
+            A collection of my data analytics and web development projects.
+        </p>
+    </div>
+
+    <!-- Project Search & Filter -->
+
+<div class="project-filter-section mb-5">
+
+    <!-- Search -->
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-8 col-lg-6">
+            <input
+                type="text"
+                id="projectSearch"
+                class="form-control"
+                placeholder="Search projects...">
+        </div>
+    </div>
+
+
+    <!-- Filter Buttons -->
+    <div class="d-flex justify-content-center flex-wrap gap-2">
+
+        <button
+            type="button"
+            class="btn btn-dark project-filter active"
+            data-filter="all">
+            All
+        </button>
+
+        <button
+            type="button"
+            class="btn btn-outline-dark project-filter"
+            data-filter="python">
+            Python
+        </button>
+
+        <button
+            type="button"
+            class="btn btn-outline-dark project-filter"
+            data-filter="sql">
+            SQL
+        </button>
+
+        <button
+            type="button"
+            class="btn btn-outline-dark project-filter"
+            data-filter="power bi">
+            Power BI
+        </button>
+
+        <button
+            type="button"
+            class="btn btn-outline-dark project-filter"
+            data-filter="excel">
+            Excel
+        </button>
+
+        <button
+            type="button"
+            class="btn btn-outline-dark project-filter"
+            data-filter="django">
+            Django
+        </button>
+
+    </div>
+
+</div>
+
+    <div class="row g-4">
+
+        {% for project in projects %}
+
+        <div class="col-md-6 col-lg-4 project-item"
+     data-technologies="{{ project.technologies|lower }}">
+
+            <div class="card h-100 shadow-sm">
+
+                <div class="card-body">
+
+                    <h4 class="card-title fw-bold">
+                        {{ project.title }}
+                    </h4>
+
+                    <p class="card-text">
+                        {{ project.short_description }}
+                    </p>
+
+                    <p>
+                        <strong>Technologies:</strong>
+                        {{ project.technologies }}
+                    </p>
+
+                    <a href="{% url 'project_detail' project.slug %}"class="btn btn-outline-dark">
+                         View Case Study
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="col-12 text-center">
+
+            <p class="text-muted">
+                No projects available yet.
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+
+{% block extra_js %}
+<script>
+    const script = document.createElement("script");
+    script.src = "{% static 'js/projects.js' %}";
+    document.body.appendChild(script);
+</script>
+{% endblock %}
+
+{% endblock %}
